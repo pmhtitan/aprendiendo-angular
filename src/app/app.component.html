@@ -40,9 +40,16 @@
 
   <!-- Contenido del curso de verdad lo juro, me gustaba demasiado el cohete como para borrarlo -->
   <!-- /-/-/-/ -->
-  <h2>Bienvenido al {{ title }} !</h2>
+  <div [ngStyle]="{'background': config.color, 'padding' : '10px' }">Pasar estilos con ngStyle</div>
+  <h2>Bienvenido a {{ title }} !</h2>
+  <p>{{ descripcion }}</p><br>
 
-  <videojuego></videojuego>
+  <button *ngIf="mostrar_videojuegos" (click)="ocultarVideojuegos()">Ocultar componente videojuegos</button>
+  <button *ngIf="!mostrar_videojuegos" (click)="ocultarVideojuegos()">Mostrar componente videojuegos</button>
+
+  <videojuego *ngIf="mostrar_videojuegos"></videojuego>
+  <app-prueba-componente></app-prueba-componente>
+
 
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
