@@ -1,9 +1,9 @@
 <h2>{{ titulo }}</h2>
 
 <h4>Añadir marca</h4>
-<p><input type="text" [(ngModel)]="mi_marca"></p>
+<p><input type="text" [(ngModel)]="mi_marca"><button (click)="mostrarMarca()">Mostrar marca</button></p>
 <p>{{ mi_marca }}</p>
-
+<p><button (click)="addMarca()">Añadir marca</button></p>
 
 <h4>modelo Zapatilla</h4>
 <ul *ngFor="let zapatilla of zapatillas; let indice = index">
@@ -21,8 +21,10 @@
        <!--  <div>Mostrar el index: {{ indice }}</div> -->
     </li>
 </ul>
+
 <!-- ngSwitch -->
 <p>ngSwitch </p>
+<label [style.color]="'purple'">Color </label><input type="text" [(ngModel)]="color"> <label [style.color]="'gray'" [style.font-size]="'12px'"> [yellow, red, blue, orange]</label>
 <ul [ngSwitch]="color">
     <li *ngSwitchCase="'yellow'" [ngStyle]="{'background':color}">El color predominante es el amarillo</li>
     <li *ngSwitchCase="'red'" [ngStyle]="{'background':color}">El color predominante es el rojo</li>

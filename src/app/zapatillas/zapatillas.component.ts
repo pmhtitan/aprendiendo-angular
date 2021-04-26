@@ -18,6 +18,7 @@ export class ZapatillasComponent implements OnInit{
     constructor(){
         this.marcas = new Array();
         this.color = "yellow";
+        this.mi_marca = "Jumper";
         this.zapatillas = [
             new Zapatilla('Reebook Classic', 'Reebook', 'white', 34, true),
             new Zapatilla('Adiddas', 'Adiddas', 'black', 22, true),
@@ -38,6 +39,14 @@ export class ZapatillasComponent implements OnInit{
             }
         });
         console.log(this.marcas);
+    }
+    mostrarMarca(){
+        alert(this.mi_marca);
+    }
+    addMarca(){
+        if(this.marcas.indexOf(this.mi_marca) == -1){
+        this.marcas.push(this.mi_marca);
+        }
     }
 
 }
