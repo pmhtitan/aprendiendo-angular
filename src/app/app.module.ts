@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { VideojuegoComponent } from './videojuego/videojuego.component';
 import { PruebaComponenteComponent } from './prueba-componente/prueba-componente.component';
 import { ZapatillasComponent } from './zapatillas/zapatillas.component';
+import { HomeComponent } from './home/home.component';
+// rutas
+import {routing, appRoutingProviders} from './app.routing';
 
 @NgModule({
   declarations: [
@@ -13,12 +16,16 @@ import { ZapatillasComponent } from './zapatillas/zapatillas.component';
     VideojuegoComponent,
     PruebaComponenteComponent,
     ZapatillasComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    routing // esto
   ],
-  providers: [],
+  providers: [
+    appRoutingProviders //  y esto para rutas
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

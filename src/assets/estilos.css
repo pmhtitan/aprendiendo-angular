@@ -1,0 +1,21 @@
+.altoPrecio{
+    background: #ffe299;
+    border-radius: 20%;
+}
+
+nav{
+    padding: 20px;
+    align-items: center;
+}
+nav > a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.nav-element-active{
+    background: black;
+    color:white!important;
+    font-weight: 600;
+    transition: all 0.5s ease-in-out;
+    padding: 3.5px;
+}

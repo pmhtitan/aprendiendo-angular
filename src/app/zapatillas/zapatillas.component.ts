@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { products } from '../models/producto';
 import { Zapatilla } from '../models/zapatilla';
+import { ZapatillaService } from '../services/zapatillas.service';
 
 
 @Component({ 
     selector: 'zapatillas',
-    templateUrl: './zapatillas.component.html',    
+    templateUrl: './zapatillas.component.html',
+    styleUrls: ['./zapatillas.component.css'],
+    providers: [ ZapatillaService ]    
 })
 export class ZapatillasComponent implements OnInit{   
     public titulo: string = "Componente de zapatillas"; 
@@ -15,20 +18,17 @@ export class ZapatillasComponent implements OnInit{
     public color: string;
     public mi_marca: string;
 
-    constructor(){
+    constructor(private _zapatillaService: ZapatillaService)
+    {
         this.marcas = new Array();
         this.color = "yellow";
-        this.mi_marca = "Jumper";
-        this.zapatillas = [
-            new Zapatilla('Reebook Classic', 'Reebook', 'white', 34, true),
-            new Zapatilla('Adiddas', 'Adiddas', 'black', 22, true),
-            new Zapatilla('Adiddas Collection 2021', 'Adiddas', 'yellow', 45, true),
-            new Zapatilla('Jaiber Arizona', 'Jaiber', 'red', 40, false)
-        ];
+        this.mi_marca = "Jumper";   
     }
     ngOnInit(){
+        this.zapatillas = this._zapatillaService.getZapatillas(); // y asi utilizamos el service 
         console.log(this.zapatillas);
         this.rellenarMarcas();
+          
     }
 
     rellenarMarcas(){
@@ -47,6 +47,15 @@ export class ZapatillasComponent implements OnInit{
         if(this.marcas.indexOf(this.mi_marca) == -1){
         this.marcas.push(this.mi_marca);
         }
+    }
+    borrarMarca(index){
+        this.marcas.splice(index, 1);
+    }
+    onBlur(){
+        console.log("Evento onBlur activado, has salido del foco")
+    }
+    onKeyEnter(){
+       alert(this.mi_marca + " Activado por Key Enter");
     }
 
 }

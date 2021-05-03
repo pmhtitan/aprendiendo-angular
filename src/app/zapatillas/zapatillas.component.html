@@ -1,15 +1,18 @@
 <h2>{{ titulo }}</h2>
 
 <h4>Añadir marca</h4>
-<p><input type="text" [(ngModel)]="mi_marca"><button (click)="mostrarMarca()">Mostrar marca</button></p>
+<p>
+    <input type="text" [(ngModel)]="mi_marca" (blur)="onBlur();" (keyup)="onKeyEnter();">
+    <button (click)="mostrarMarca()">Mostrar marca</button>
+</p>
 <p>{{ mi_marca }}</p>
 <p><button (click)="addMarca()">Añadir marca</button></p>
 
 <h4>modelo Zapatilla</h4>
 <ul *ngFor="let zapatilla of zapatillas; let indice = index">
     <li>
-        <span [ngStyle]="{'text-decoration' : !zapatilla.stock ? 'line-through' : 'none'}"> {{ zapatilla.nombre }}</span>
-
+        <span [ngStyle]="{'text-decoration' : !zapatilla.stock ? 'line-through' : 'none'}" > {{ zapatilla.nombre }}</span>
+        <strong [ngClass]="{'altoPrecio' : zapatilla.precio >= 45}"> {{zapatilla.precio | currency:'EUR' }} </strong> <!-- [class.altoPrecio]="zapatilla.precio >= 45" -->
         <ng-template *ngIf="zapatilla.stock; else elseBlock">
             <span *ngIf="zapatilla.precio < 30"
             [style.background] = "zapatilla.precio < 30 ? 'green' : 'transparent'"
@@ -34,8 +37,13 @@
 
 <h6>Marcas disponibles</h6>
     <ul>
-        <div *ngFor="let marca of marcas">
-            <h6><li>{{ marca }}</li></h6>
+        <div *ngFor="let marca of marcas; let indice = index">
+            <h6>
+                <li>
+                    {{ marca }}
+                    <button (click)="borrarMarca(indice)">Eliminar</button>
+                </li>
+            </h6>
         </div>
     </ul>
 <h4>modelo productos</h4>

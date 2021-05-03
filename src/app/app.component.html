@@ -44,11 +44,20 @@
   <h2>Bienvenido a {{ title }} !</h2>
   <p>{{ descripcion }}</p><br>
 
+  <nav>
+    <a [routerLink]="['/home']" [routerLinkActive]="['nav-element-active']" >Home</a>
+    <a [routerLink]="['/zapatillas']" [routerLinkActive]="['nav-element-active']">Zapatillas</a>
+    <a [routerLink]="['/videojuegos']" [routerLinkActive]="['nav-element-active']">Videojuegos</a>
+    <a [routerLink]="['/prueba']" [routerLinkActive]="['nav-element-active']">Prueba</a>
+    <a [routerLink]="['/asd']" [routerLinkActive]="['nav-element-active']">404</a>
+  </nav>
+
   <button *ngIf="mostrar_videojuegos" (click)="ocultarVideojuegos()">Ocultar componente videojuegos</button>
   <button *ngIf="!mostrar_videojuegos" (click)="ocultarVideojuegos()">Mostrar componente videojuegos</button>
 
-  <videojuego *ngIf="mostrar_videojuegos"></videojuego>
-  <app-prueba-componente></app-prueba-componente>
+<!--   <videojuego *ngIf="mostrar_videojuegos"></videojuego> -->
+  <router-outlet></router-outlet>
+  <!-- ESTO para que funcione el sistema de rutas: tenemos que utilizar <router-outlet></router-outlet> para que se encarge de manejar todo. -->
 
 
   <!-- Highlight Card -->

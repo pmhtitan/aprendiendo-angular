@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// para poder recoger parámetros
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-prueba-componente',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PruebaComponenteComponent implements OnInit {
 
-  constructor() { }
+  public nombre: string;
+  public edad: number;
 
-  ngOnInit(): void {
+  constructor(
+    private _route: ActivatedRoute,
+    private _router: Router 
+    ) { }
+
+  ngOnInit(){
+    this._route.params.subscribe((params: Params) => {
+      // aquí ya dentro tengo TODOS los parámetros que le estoy pasando por la URL
+        this.nombre = params['nombre'];
+        this.edad = +params.edad;
+    });
+  }
+
+  redirigirZapatillas(){
+    this._router.navigate(['/zapatillas']);
   }
 
 }

@@ -1,0 +1,17 @@
+<p>home works!</p>
+
+<!-- ngTemplate IF ELSE -->
+<div *ngIf="identificado; else noIdentificado">
+    <h4>Estás identificado</h4> <button (click)="setIdentificado()">Log out</button>
+</div>
+<ng-template #noIdentificado>
+    <h4>Identifícate</h4> <button (click)="setIdentificado()">Log in</button>
+</ng-template>
+<br><br>
+
+<!-- ngTemplate IF THEN ELSE -->
+<div *ngIf="resultado; then Si else No"></div> <!-- curioso Hagrid; Lo que metas de texto en el div lo ignora, y además, los ng-template los injecta antes -->
+<ng-template #Si>Dime Si o No <br><button (click)="si()">Si</button></ng-template>
+<ng-template #No>Dime Si o No <br><button (click)="no()">No</button></ng-template>
+<br><br>
+
