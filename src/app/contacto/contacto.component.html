@@ -1,0 +1,60 @@
+<div class="contact-container">
+    <p>contacto works!</p>
+
+    <div class="contact-box">
+        <h4>Formulario Angular Stackbliz</h4>
+        <form [formGroup]="formulario" (ngSubmit)="submitted(formulario.value)" novalidate>
+            <label>Nombre</label><br>
+            <input type="text" formControlName="nombre" placeholder="Tu nombre" required><br>
+
+            <label>Apellidos</label><br>
+            <input type="text" formControlName="apellidos" placeholder="Tus apellidos" required><br>
+
+            <label>Email</label><br>
+            <input type="email" formControlName="email" placeholder="Tu email" required><br>
+
+            <label>Mensaje</label><br>
+            <input type="text" formControlName="mensaje" placeholder="Tu mensaje" required> <br>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <h4>Formulario Angular Profesor</h4>
+        <div *ngIf="show_data">
+	        {{show_data.nombre}}
+        </div>
+
+        <form #formContacto="ngForm" (ngSubmit)="submitted2(formContacto)">
+            <label for="nombre">Nombre</label>  <br/>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre" required pattern="[a-zA-Z]+"/>  
+            <span *ngIf="nombre.touched && !nombre.valid">
+                El nombre es obligatorio
+            </span>
+            <br/>
+
+            <label for="apellidos">Apellidos</label>  <br/>
+            <input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="usuario.apellidos" required pattern="[a-zA-Z]+" /> 
+            <span *ngIf="apellidos.touched && !apellidos.valid">
+                Los apellidos son obligatorios
+            </span>
+            <br/>
+
+            <label for="email">Email</label>  <br/>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="usuario.email" required  /> 
+            <span *ngIf="email.touched && !email.valid">
+                El email no es válido
+            </span>
+            <br/>
+
+            <label for="mensaje">Mensaje</label>  <br/>
+            <textarea name="mensaje" #mensaje="ngModel" [(ngModel)]="usuario.mensaje" required></textarea>
+            <span *ngIf="mensaje.touched && !mensaje.valid">
+                El mensaje es obligatorio
+            </span>
+            <br/>
+
+            <input type="submit" value="Enviar" [disabled]="!formContacto.form.valid"/>
+        </form>
+
+    </div>  
+</div>

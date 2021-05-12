@@ -1,0 +1,11 @@
+<div [ngStyle]="{'margin': '20px'}">
+    <input type="number" [(ngModel)]="usuario_id" (keyup.enter)="cargaUsuario()" placeholder="ID usuario + enter">
+    <br>
+    <div class="cargando" *ngIf="!userObj">
+        <div class="lds-dual-ring"></div>
+    </div>
+    <div *ngIf="userObj">
+        <img src="{{ userObj.data.avatar }}" alt="" width="200" />
+        <h4>{{ userObj.data.first_name + ' ' + userObj.data.last_name }}</h4>
+    </div>
+</div>

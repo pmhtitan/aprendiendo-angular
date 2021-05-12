@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component'
 import { ZapatillasComponent } from './zapatillas/zapatillas.component';
 import { VideojuegoComponent } from './videojuego/videojuego.component';
 import { PruebaComponenteComponent } from './prueba-componente/prueba-componente.component';
+import { ExternoComponent } from './externo/externo.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 // Crear un array de configuración de las rutas
 const appRoutes : Routes = [
@@ -39,9 +41,18 @@ const appRoutes : Routes = [
         component: PruebaComponenteComponent
     },
     {
-        path: '**', // wild card, si salta 404 nos redirige a la base ('/');
+        path: 'externo',
+        component: ExternoComponent
+    },
+    {
+        path: 'contacto',
+        component: ContactoComponent
+    },
+    {
+        path: '**', // wild card, si salta 404 nos redirige a la base ('/'); PONER EL ULTIMO SI NO LO SIGUIENTE PASA DE ELLO
         component: HomeComponent
-    }
+    },
+    
 ];
 
 // Exportar el modulo
